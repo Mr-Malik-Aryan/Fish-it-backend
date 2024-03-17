@@ -29,7 +29,7 @@ const client = new MongoClient(process.env.MONGO_URI);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        app.listen(4000, ()=> {
+        app.listen(process.env.PORT || 4000, ()=> {
             console.log('listening on port',4000);
         });
     })

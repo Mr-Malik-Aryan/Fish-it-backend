@@ -29,7 +29,7 @@ router.get('/download/:fileName/:password', async (req, res) => {
       return res.status(404).send('File not found');
     }
 
-    bcrypt.compare(password,file.password).then(function(result) {
+    bcrypt.compare(password+fileName,file.password).then(function(result) {
       // result == true
       if(result===true)
       {

@@ -37,7 +37,7 @@ router.get('/download/:fileName/:password', async (req, res) => {
           message: 'success',
           text: file.text,
           fileName: file.fileName,
-          file:file.file
+     
         }
       
     

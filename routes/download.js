@@ -20,9 +20,10 @@ mongoose.connect(process.env.MONGO_URI, {
 router.get('/download/:fileName/:password', async (req, res) => {
   const fileName = req.params.fileName;
   const password = req.params.password;
+    const hashedPassword = await bcrypt.hash((password+fileName),process.env.SALT);
 
   try {
-    const file = await data.findOne({ "name": fileName });
+    const file = await data.findOne({ "password": hashedPassword });
 
     if (!file) {
       return res.status(404).send('File not found');
@@ -58,7 +59,7 @@ router.get('/downloadfile/:fileName/:password', async (req, res) => {
   const fileName = req.params.fileName;
   const password = req.params.password;
   const hashedPassword = await bcrypt.hash((password+fileName),process.env.SALT);
-  console.log(hashedPassword)
+  
   try {
     const file = await data.findOne({ "password": hashedPassword});
 

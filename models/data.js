@@ -36,7 +36,6 @@ const dataSchema = mongoose.Schema(
 
 
 );
-// Example index creation in MongoDB
 dataSchema.index({ name: 1 }, { unique: true });
 
 

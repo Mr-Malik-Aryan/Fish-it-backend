@@ -7,7 +7,7 @@ import uploadroute from './routes/upload.js';
 import downloadroute from './routes/download.js';
 
 dotenv.config();
-
+var PORT =  process.env.PORT || 8080
 const app = express();
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -29,8 +29,8 @@ const client = new MongoClient(process.env.MONGO_URI);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        app.listen(process.env.PORT || 4000, ()=> {
-            console.log('listening on port',4000);
+        app.listen(PORT, ()=> {
+            console.log('listening on port',PORT);
         });
     })
     .catch((error) => {

@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { promises as fs } from 'fs'; // Import fs.promises for async file read
 import dotenv from 'dotenv';
 import path from 'path';

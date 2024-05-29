@@ -1,5 +1,5 @@
 import multer from 'multer';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import express from 'express';
 import { Router } from 'express';
 import data from '../models/data.js';

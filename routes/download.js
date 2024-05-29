@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'argon2';
 import { promises as fs } from 'fs'; // Import fs.promises for async file read
 import dotenv from 'dotenv';
 import path from 'path';
@@ -29,7 +29,7 @@ router.get('/download/:fileName/:password', async (req, res) => {
       return res.status(404).send('File not found');
     }
 
-    bcrypt.compare(password+fileName,file.password).then(function(result) {
+    bcrypt.verify(password+fileName,file.password).then(function(result) {
       // result == true
       if(result===true)
       {
@@ -67,7 +67,7 @@ router.get('/downloadfile/:fileName/:password', async (req, res) => {
       return res.status(404).send('File not found');
     }
 
-    bcrypt.compare(password+fileName,file.password).then(function(result) {
+    bcrypt.verify(password+fileName,file.password).then(function(result) {
       // result == true
       console.log(file.type)
       if(result===true)

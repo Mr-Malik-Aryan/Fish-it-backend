@@ -1,5 +1,5 @@
 import multer from 'multer';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'argon2';
 import express from 'express';
 import { Router } from 'express';
 import data from '../models/data.js';
